@@ -8,20 +8,19 @@ services:
   kong-migrate:
     build: ./kong-migrate
     environment:
-      - KONG_DATABASE=postgres
-      - KONG_PG_HOST=kong-database
+      - KONG_PG_HOST=postgres
       - KONG_PG_DATABASE=kong
-    links:
+      - KONG_DATABASE=kong
+    depends_on:
       - postgres
   kong:
     build: ./kong
     environment:
-      - KONG_DATABASE=postgres
-      - KONG_PG_HOST=kong-database
+      - KONG_PG_HOST=postgres
       - KONG_PG_DATABASE=kong
+      - KONG_DATABASE=kong
     depends_on:
       - kong-migrate
-    links:
       - postgres
     ports:
       - "8000:8000"

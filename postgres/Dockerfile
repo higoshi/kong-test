@@ -1,6 +1,1 @@
 FROM postgres:latest
-
-EXPOSE 5432
-
-ENV POSTGRES_USER=kong
-ENV POSTGRES_DB=kong
