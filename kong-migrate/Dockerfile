@@ -1,3 +1,3 @@
 FROM kong:latest
 
-CMD [ "kong", "migrations", "up" ]
+CMD ["kong", "migrations", "bootstrap"]
