@@ -19,6 +19,7 @@ services:
       - KONG_DATABASE=postgres
       - KONG_PG_HOST=postgres
       - KONG_PG_DATABASE=kong
+      - KONG_ADMIN_LISTEN=8001
     depends_on:
       - postgres
       - kong-migrate
