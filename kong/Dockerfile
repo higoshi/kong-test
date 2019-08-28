@@ -1,3 +1,5 @@
 FROM kong:latest
 
-CMD ["echo", "start"]
+COPY ./etc/kong/ /etc/kong/
+
+CMD ["kong", "start"]
