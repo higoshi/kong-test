@@ -5,24 +5,26 @@ services:
     environment:
       - POSTGRES_USER=kong
       - POSTGRES_DB=kong
-  kong-migrate:
-    build: ./kong-migrate
-    environment:
-      - KONG_DATABASE=postgres
-      - KONG_PG_HOST=postgres
-      - KONG_PG_DATABASE=kong
-    depends_on:
-      - postgres
+      - POSTGRES_PASSWORD=kong
+  # kong-migrate:
+  #   build: ./kong-migrate
+  #   environment:
+  #     - KONG_DATABASE=postgres
+  #     - KONG_PG_HOST=postgres
+  #     - KONG_PG_DATABASE=kong
+  #     - KONG_PG_PASSWORD=kong
+  #   depends_on:
+  #     - postgres
   kong:
     build: ./kong
     environment:
       - KONG_DATABASE=postgres
       - KONG_PG_HOST=postgres
       - KONG_PG_DATABASE=kong
+      - KONG_PG_PASSWORD=kong
       - KONG_ADMIN_LISTEN=0.0.0.0:8001
     depends_on:
       - postgres
-      - kong-migrate
     ports:
       - "8000:8000"
       - "8001:8001"

@@ -1,5 +1,8 @@
 FROM kong:latest
 
 COPY ./etc/kong/ /etc/kong/
+COPY ./var/kong /var/kong
 
-CMD ["kong", "start"]
+WORKDIR /var/kong
+
+CMD ["./entrypoint.sh"]
