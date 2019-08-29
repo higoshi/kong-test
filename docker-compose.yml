@@ -25,6 +25,7 @@ services:
     build: ./kong-gui
     depends_on:
       - postgres
+      - kong
     environment:
       - DB_ADAPTER=postgres
       - DB_HOST=postgres
